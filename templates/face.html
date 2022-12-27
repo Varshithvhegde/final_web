@@ -1,0 +1,86 @@
+{% extends "bootstrap/base.html" %}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='styles.css')}}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block content%}
+<ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333;">
+    <li style="float: left;"><a class="active" href="home" style="display: block; color: white;padding: 14px 16px;">Home</a></li>
+    <li style="float: left;"><a href="face" style="display: block; color: white;padding: 14px 16px;">Face</a></li>
+    <!-- <li style="float: left;"><a href="voice" style="display: block; color: white;padding: 14px 16px;">Voice</a></li> -->
+</ul>
+<a href="qstn"><img src="{{url_for('.static',filename = 'bgm.svg')}}"></a>
+<h2 class="heading" id="detData">{{data}}</br></h2>
+<img class="icon" src="{{url_for('.static',filename = 'face-detection.svg')}}">
+<a href="expression" id="hh"><button class="detect_btn" id="Detect">Detect</button></a>
+<p>Press q to quit</p>
+
+<script src="static/script.js"></script>
+
+<script>
+    // get url and get dep parameter from it
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var dep = url.searchParams.get("dep");
+    var datat= document.getElementById("detData").innerHTML;
+    var status=0;
+    var btn = document.getElementById("Detect");
+    var btn2 = document.getElementById("hh");
+    // when q is pressed
+    $(document).keypress(function(e) {
+    //   wait for 5 seconds
+        if(e.which == 113) {
+            setTimeout(function(){
+                // get the data from dataget
+                var data = document.getElementById("detData").innerHTML;
+                // if data is not empty
+                alert(data);
+            }, 5000);
+        }
+        });
+    if(datat == "Depressed<br>"){
+        document.getElementById("detData").style.color = "red";
+        status=1;
+        btn.innerHTML = "Next";
+        btn2.href = "voice?dep=true&data="+datat;
+        
+
+    }
+    else if(datat == "Anxiety<br>"){
+        document.getElementById("detData").style.color = "blue";
+        status=1;
+        btn.innerHTML = "Next";
+        btn2.href = "voice?dep=true&data="+datat;
+    }
+    else if(datat=="Normal<br>"){
+        document.getElementById("detData").style.color = "green";
+        status=1;
+        btn.innerHTML = "Next";
+        btn2.href = "voice?dep=true&data="+datat;
+    }
+    else{
+        document.getElementById("detData").style.color = "green";
+    }
+
+    // get button and add event listener
+    
+    btn.addEventListener("click", function() {
+        // if status is 0
+        if(status==0){
+            // get the data from dataget
+        //   
+        }
+        // if status is 1
+        else{
+            window.location.href = "voice?dep=true&data="+datat;   
+             }
+    });
+
+    
+    
+</script>
+{% endblock %}
