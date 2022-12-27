@@ -6,7 +6,8 @@ matplotlib==3.5.2
 numpy==1.23.1
 opencv_python==4.6.0.66
 pandas==1.5.1
-PyAudio==0.2.12
+tensorflow_intel
+PyAudio==0.2.11
 scikit_learn==1.2.0
 tensorflow==2.11.0
 tqdm==4.64.1
