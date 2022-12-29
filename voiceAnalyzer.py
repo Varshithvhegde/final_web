@@ -30,5 +30,5 @@ def alalyzer():
 
     livepreds1=livepreds.argmax(axis=1)
     liveabc = livepreds1.astype(int).flatten()
-    pl = ["Male Angry","Male Calm","Male Anxious","Male Happy","Male Depressed","Female Angry","Female Calm","Female Anxious","Female Happy","Female Depressed"]
+    pl = ["Angry","Calm","Anxious","Happy","Depressed","Angry","Calm","Anxious","Happy","Depressed"]
     return pl[int(liveabc)]
