@@ -126,4 +126,3 @@ def predict():
             result = 'Your Depression test result : Severe Depression'
     return render_template("result.html", result=result)
 
-    
