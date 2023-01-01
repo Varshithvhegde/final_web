@@ -8,6 +8,7 @@ import time
 import pyaudio
 import os
 import wave
+from models import Model
 app = Flask(__name__)
 Bootstrap(app)
 @app.route('/')
@@ -38,7 +39,7 @@ def voice():
 
 @app.route('/quiz')
 def quiz():
-    return render_template("quiz.html",data = "Anxiety and Depression Detection")
+    return render_template("quiz1.html",data = "Anxiety and Depression Detection")
 
 @app.route('/voice_recording')
 def voice_recording():
@@ -93,7 +94,36 @@ def voice_analyzeer():
             
     
     return render_template("voice.html",data = res)
+@app.route('/quiz_new')
+def quiz_new():
+    return render_template("quiz1.html",data = "Anxiety and Depression Detection")
+@app.route('/predict', methods=["POST"])
+def predict():
+    q1 = int(request.form['a1'])
+    q2 = int(request.form['a2'])
+    q3 = int(request.form['a3'])
+    q4 = int(request.form['a4'])
+    q5 = int(request.form['a5'])
+    q6 = int(request.form['a6'])
+    q7 = int(request.form['a7'])
+    q8 = int(request.form['a8'])
+    q9 = int(request.form['a9'])
+    q10 = int(request.form['a10'])
 
-
+    values = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10]
+    model = Model()
+    classifier = model.svm_classifier()
+    prediction = classifier.predict([values])
+    if prediction[0] == 0:
+            result = 'Your Depression test result : No Depression'
+    if prediction[0] == 1:
+            result = 'Your Depression test result : Mild Depression'
+    if prediction[0] == 2:
+            result = 'Your Depression test result : Moderate Depression'
+    if prediction[0] == 3:
+            result = 'Your Depression test result : Moderately severe Depression'
+    if prediction[0] == 4:
+            result = 'Your Depression test result : Severe Depression'
+    return render_template("result.html", result=result)
 
     

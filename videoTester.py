@@ -41,7 +41,7 @@ def exp():
             #find max indexed array
             max_index = np.argmax(predictions[0])
 
-            emotions = ('angry', 'disgust', 'Anxiety', 'happy', 'Depressed', 'surprise', 'neutral')
+            emotions = ('angry', 'disgust', 'Anxiety', 'happy', 'Depressed', 'neutral', 'surprise')
             predicted_emotion = emotions[max_index]
             if predicted_emotion=='Anxiety':
                 count_anx=count_anx+1

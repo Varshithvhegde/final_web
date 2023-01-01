@@ -9,13 +9,13 @@
 {% block content%}
 <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333;">
     <li style="float: left;"><a class="active" href="home" style="display: block; color: white;padding: 14px 16px;">Home</a></li>
-    <li style="float: left;"><a href="face" style="display: block; color: white;padding: 14px 16px;">Face</a></li>
-    <li style="float: left;"><a href="voice" style="display: block; color: white;padding: 14px 16px;">Voice</a></li>
-    <li style="float: left;"><a href="quiz" style="display: block; color: white;padding: 14px 16px;">Quiz</a></li>
+    <!-- <li style="float: left;"><a href="face" style="display: block; color: white;padding: 14px 16px;">Face</a></li> -->
+    <!-- <li style="float: left;"><a href="voice" style="display: block; color: white;padding: 14px 16px;">Voice</a></li> -->
+    <!-- <li style="float: left;"><a href="quiz" style="display: block; color: white;padding: 14px 16px;">Quiz</a></li> -->
 </ul>
 
     <h4 class="Question">Are you having thoughts that you would be better off dead, or of hurting yourself?</h4>
-    <div id="question1">
+    <div id="question1" class="Questions">
     <div class="radio">
         <label><input type="radio" name="q1" value="1">Yes</label>
     </div>
@@ -25,7 +25,7 @@
     </div>
 
     <h4 class="Question">Are you having trouble concentrating on things such as reading the newspaper or watching TV?</h4> 
-    <div id="question2">
+    <div id="question2" class="Questions">
         <div class="radio">
             <label><input type="radio" name="q2" value="1">Yes</label>
         </div>
@@ -35,7 +35,7 @@
      </div>
     
     <h4 class="Question">Are you having trouble falling asleep, or staying asleep, or sleeping too much?</h4>
-    <div id="question3">
+    <div id="question3" class="Questions">
         <div class="radio">
             <label><input type="radio" name="q3" value="1">Yes</label>
         </div>
@@ -45,7 +45,7 @@
     </div>
 
     <h4 class="Question">Are you feeling tired or having little energy?</h4>
-    <div id="question4">
+    <div id="question4" class="Questions">
         <div class="radio">
             <label><input type="radio" name="q4" value="1">Yes</label>
         </div>
@@ -55,7 +55,7 @@
     </div>
 
     <h4 class="Question">Are you feeling bad about yourself - or that you are a failure or have let yourself or your family down?</h4>
-    <div id="question5">
+    <div id="question5"  class="Questions">
         <div class="radio">
             <label><input type="radio" name="q5" value="1">Yes</label>
         </div>
@@ -65,7 +65,7 @@
     </div>
 
     <h4 class="Question">Are you having trouble enjoying things you used to like?</h4>
-    <div id="question6">
+    <div id="question6" class="Questions">
         <div class="radio">
             <label><input type="radio" name="q6" value="1">Yes</label>
         </div>
@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    <button type="button" class="btn btn-primary" id="submit">Submit</button>
+    <button type="button" class="btn_quiz" id="submit">Submit</button>
 
     <!-- <h4 class="Question7">Are you feeling bad about yourself - or that you are a failure or have let yourself or your family down?</h4> -->
     <!-- Add script.js to the bottom of the page -->
