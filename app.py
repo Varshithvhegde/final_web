@@ -79,7 +79,7 @@ def voice_recording():
     wf.writeframes(b''.join(frames))
     wf.close()
     return render_template("voice.html", data = "Done recording.")
-
+    
 @app.route('/voice_analyzer')
 def voice_analyzeer():
     res = voiceAnalyzer.alalyzer()
