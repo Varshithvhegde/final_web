@@ -9,7 +9,7 @@ import pyaudio
 import os
 import wave
 from models import Model
-
+import Final_Result
 import sentiment_predict_tweet
 
 app = Flask(__name__)
@@ -50,7 +50,7 @@ def face():
 
 @app.route('/voice')
 def voice():
-    return render_template("voice.html",data = "Click on the Mic to Record")
+    return render_template("voice.html",data = "Click on the Mic to Record",Detect="Detect",ref="voice_analyzer")
 
 @app.route('/quiz')
 def quiz():
@@ -93,7 +93,7 @@ def voice_recording():
     wf.setframerate(RATE)
     wf.writeframes(b''.join(frames))
     wf.close()
-    return render_template("voice.html", data = "Done recording.")
+    return render_template("voice.html", data = "Done recording.",Detect="Detect",ref="voice_analyzer")
     
 @app.route('/voice_analyzer')
 def voice_analyzeer():
@@ -116,10 +116,7 @@ def voice_analyzeer():
         depression=0
     with open('voicecheck.txt', 'w') as f:
         f.write(str(depression))
-
-            
-    
-    return render_template("voice.html",data = res)
+    return render_template("voice.html",data = res, Detect="Next",ref="face")
 @app.route('/quiz_new')
 def quiz_new():
     return render_template("quiz1.html",data = "Anxiety and Depression Detection")
@@ -180,6 +177,10 @@ def text():
         depressed=0
     with open('texttweet.txt', 'w') as f:
         f.write(str(depressed))
-    return render_template("result.html", result=predictt)
+    return render_template("result1.html", result=predictt)
     
-
+@app.route('/finalresult')
+def finalresult():
+    fresult = Final_Result.finalres()
+    return render_template("finalresult.html",result=fresult)
+    

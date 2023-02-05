@@ -14,5 +14,7 @@
 </ul>
     <a href="voice_recording"><img src="{{url_for('.static',filename = 'microphone.svg')}}"></a>
     <h2 class="heading">{{data}}</h2>
-    <a href="voice_analyzer"><button class="voice_detect_btn">Detect</button></a>
+    <a href={{ref}}><button class="voice_detect_btn">{{Detect}}</button></a>
+    
+
 {% endblock %}
