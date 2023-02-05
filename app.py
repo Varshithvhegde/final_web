@@ -9,6 +9,9 @@ import pyaudio
 import os
 import wave
 from models import Model
+
+import sentiment_predict_tweet
+
 app = Flask(__name__)
 Bootstrap(app)
 @app.route('/')
@@ -26,6 +29,18 @@ def phq():
 @app.route('/expression') 
 def expression():
     p=videoTester.exp()
+    if(p=="Anxious"):
+        depression=1
+    
+    if(p=="Depressed"):
+        depression=2
+    
+    if(p=="Normal"):
+        depression=0
+    
+    with open('videocheck.txt', 'w') as f:
+        f.write(str(depression))
+    
     return render_template("face.html",data=p)
 
 
@@ -90,7 +105,18 @@ def voice_analyzeer():
         if "Result:" in line:
             sound = line.split()
             res2 = sound[1]
-            
+    if(res=="Happy"):
+        depression=0
+      
+    if(res=="Anxious"):
+        depression=1
+    if(res=="Depressed"):
+        depression=2
+    if(res!="Happy" and res!="Anxious" and res!="Depressed"):
+        depression=0
+    with open('voicecheck.txt', 'w') as f:
+        f.write(str(depression))
+
             
     
     return render_template("voice.html",data = res)
@@ -114,15 +140,46 @@ def predict():
     model = Model()
     classifier = model.svm_classifier()
     prediction = classifier.predict([values])
+    depressed=0
     if prediction[0] == 0:
             result = 'Your Depression test result : No Depression'
+            depressed=0
     if prediction[0] == 1:
             result = 'Your Depression test result : Mild Depression'
+            depressed=1
     if prediction[0] == 2:
             result = 'Your Depression test result : Moderate Depression'
+            depressed=2
     if prediction[0] == 3:
             result = 'Your Depression test result : Moderately severe Depression'
+            depressed=3
     if prediction[0] == 4:
             result = 'Your Depression test result : Severe Depression'
+            depressed=4
+    with open('quizcheck.txt', 'w') as f:
+        f.write(str(depressed))
+        f.close()
     return render_template("result.html", result=result)
+
+@app.route('/sentiment')
+def sentiment():
+    return render_template("sentiment.html",data="Anxiety and Depression Detection")
+@app.route('/text', methods=["POST"])
+def text():
+    text = request.form['form10']
+    predictt= sentiment_predict_tweet.RunNew(text)
+    print(predict)
+    if(predictt=="Positive"):
+        res="Your input is Positive"
+        depressed=0
+    if(predictt=="Negative"):
+        res="Your input is Negative"
+        depressed=1
+    if(predictt=="Neutral"):
+        res="Your input is Neutral"
+        depressed=0
+    with open('texttweet.txt', 'w') as f:
+        f.write(str(depressed))
+    return render_template("result.html", result=predictt)
+    
 
