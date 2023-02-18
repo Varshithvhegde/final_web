@@ -116,7 +116,7 @@ def voice_analyzeer():
         depression=0
     with open('voicecheck.txt', 'w') as f:
         f.write(str(depression))
-    return render_template("voice.html",data = res, Detect="Next",ref="face")
+    return render_template("voice.html",data = res, Detect="Next",ref="finalresult")
 @app.route('/quiz_new')
 def quiz_new():
     return render_template("quiz1.html",data = "Anxiety and Depression Detection")
