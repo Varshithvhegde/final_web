@@ -55,4 +55,44 @@ h2{
         text-align: center;
         color: #E5E5E5;
     }
-  
+
+    .navbar-brand {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    
+    .navbar-nav .nav-link {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    
+    /* Styles for the main content */
+    .container {
+      height: calc(100vh - 80px); /* Set the height of the container to fill the viewport minus the height of the navbar */
+    }
+    
+    .display-4 {
+      font-size: 4rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    
+    .lead {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 3rem;
+    }
+    
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+      font-size: 1.5rem;
+      font-weight: 500;
+      padding: 1rem 2rem;
+      transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    }
+    
+    .btn-primary:hover {
+      background-color: #0062cc;
+      border-color: #005cbf;
+    }

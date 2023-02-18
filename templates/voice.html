@@ -7,11 +7,14 @@
 {% endblock %}
 
 {% block content%}
-<ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333;">
-    <li style="float: left;"><a class="active" href="home" style="display: block; color: white;padding: 14px 16px;">Home</a></li>
-    <!-- <li style="float: left;"><a href="face" style="display: block; color: white;padding: 14px 16px;">Face</a></li> -->
-    <!-- <li style="float: left;"><a href="voice" style="display: block; color: white;padding: 14px 16px;">Voice</a></li> -->
-</ul>
+<ul class="navbaring">
+    <li><a href="/">Home</a></li>
+    <li><a class="active" href="quiz">Quiz PHQ9</a></li>
+    <li><a href="sentiment">Text Analyzer</a></li>
+    <li><a href="face">Face</a></li>
+    <li><a href="voice">Voice</a></li>
+  </ul>
+
     <a href="voice_recording"><img src="{{url_for('.static',filename = 'microphone.svg')}}"></a>
     <h2 class="heading">{{data}}</h2>
     <a href={{ref}}><button class="voice_detect_btn">{{Detect}}</button></a>

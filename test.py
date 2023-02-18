@@ -174,7 +174,7 @@ if __name__ == "__main__":
     file = "output10.wav"
     # construct the model
     model = create_model()
-    
+     
     # load the saved/trained weights
     model.load_weights("results/model.h5")
     if not file or not os.path.isfile(file):

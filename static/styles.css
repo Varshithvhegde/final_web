@@ -24,6 +24,10 @@ text-align: center;
 color: #fffdfd;
 }
 
+#detData{
+    left:600px;
+}
+
 .detect_btn {
 position: absolute;
 width: 410px;
@@ -146,3 +150,34 @@ h4{
     opacity: 0.9;
     height: 50px;
 }
+
+#camp{
+    top:300px;
+    width: auto;
+    left: 850px;
+}
+
+.navbaring {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li>a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li>a:hover{
+    background-color: #111;
+  }
+
