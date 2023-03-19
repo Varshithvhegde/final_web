@@ -18,10 +18,48 @@
   <h2>Anxiety and Depression Detection</h2>
 
   <!-- Add start button -->
+    <!-- Add a checkbox to ask user consent for camera and data privacy -->
+    <div class="checkconsent">
+    <input type="checkbox" id="consent" name="consent" value="consent">
+    <label for="consent" class="consentlabel">I agree to the terms and conditions</label><br>
+    </div>
+    <a href="quiz"><button class="start_btn" id="startbtn">Start</button></a>
 
-    <a href="quiz"><button class="start_btn">Start</button></a>
+<script>
+  // add event listener to start button
+  document.getElementById("startbtn").addEventListener("click", function(){
+    // if user has not given consent
+    if(document.getElementById("consent").checked == false){
+      // alert user to give consent
+      alert("Please give consent to continue");
+      // prevent default behaviour
+      event.preventDefault();
+    }
+  });
 
+</script>
+<style>
+  .checkconsent{
+    margin-left: 40%;
+    margin-top: 20%;
+  }
+  input[type=checkbox] {
+  margin: 0px 10px 0px 0px;
+  }
+  .consentlabel{
+    font-size: 20px;
+    color: white;
+    /* selectable no */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+  }
 
+</style>
 
 
 {% endblock %}
