@@ -18,8 +18,7 @@ def exp():
     count_anx=0
     count_desp=0
     count_normal=0
-    # cv2.namedWindow("output", cv2.WINDOW_NORMAL)
-    # cv2.setWindowProperty("output", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+  
     for i in range(0,100):
         ret,test_img=cap.read()# captures frame and returns boolean value and captured image
         if not ret:
@@ -50,13 +49,15 @@ def exp():
                 count_desp=count_desp+1
             else:
                 count_normal=count_normal+1
-            cv2.putText(test_img, predicted_emotion, (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2)
+            # cv2.putText(test_img, predicted_emotion, (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2)
 
         resized_img = cv2.resize(test_img, (1000, 700))
-        
-        # cv2.imshow('Facial emotion analysis ',resized_img)
-        # cv2.setWindowProperty("Facial emotion analysis ", cv2.WND_PROP_TOPMOST, 1)
-
+        cv2.namedWindow('Facial emotion analysis', cv2.WINDOW_NORMAL)
+        cv2.imshow('Facial emotion analysis ',resized_img)
+        cv2.waitKey(1)
+        cv2.setWindowProperty("Facial emotion analysis ", cv2.WND_PROP_TOPMOST, 1)
+    cap.release()
+    cv2.destroyAllWindows()
         
 
 
@@ -75,8 +76,7 @@ def exp():
     return res
     # break
 
-    cap.release()
-    cv2.destroyAllWindows()
+
 
     # Run video for 10 seconds and dont show any window
    
